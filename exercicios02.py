@@ -1,6 +1,9 @@
-def verificar_idade(nome, idade):
-    if idade >= 18:
-        return f"{nome} é maior de idade"
-    else:
-        return f"{nome} é menor de idade"
-print(verificar_idade("caminhão", 17))
+def somar_pares(lista):
+    total = 0 
+    for i in lista:
+           total += i 
+    return total
+
+numeros = [2, 738, 69, 33, 17, 20]
+
+print(somar_pares(numeros)) 

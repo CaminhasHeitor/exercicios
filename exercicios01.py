@@ -4,7 +4,7 @@ def somar_pares(lista):
            total += i 
     return total
 
-numeros = [2, 738, 69, 33, 17, 20]
+numeros = [1, 2,  3, 4, 5, 6]
 
 print(somar_pares(numeros)) 
 
