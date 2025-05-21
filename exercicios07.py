@@ -1,4 +1,16 @@
-clientes = []
+import json
+import os
+db_clientes = "db_clientes.json"
+#clientes = []
+
+def carregar_dados():
+    if os.path.exists(db_clientes):
+        with open(db_clientes, 'r', encoding="utf-8") as arq_json:
+            return json.load(arq_json)
+    else:
+        return []
+
+
 
 def obter_dados_cliente():
     nome_cliente = ("informe o nome do cliente: ")
@@ -7,7 +19,7 @@ def obter_dados_cliente():
     Data_de_nascimento = input("informe a data de nascimento do cliente: ")
     endereco_cliente = input("informe o endereço do cliente: ")
     Cidade_cliente = input("informe a cidade do cliente: ")
-    Estado_cliente = input("informe o estad do cliente: ")
+    Estado_cliente = input("informe o estado do cliente: ")
     Telefone_cliente = int(input("informe o telefone do cliente: "))
     Celular_cilente = int(input("informe o celular do cliente: "))
     Email_cliente = input("informe o email do cliente: ")
@@ -28,14 +40,18 @@ def obter_dados_cliente():
     return cliente
 
 def cadastrar_cliente(dados_cliente):
+    clientes = carregar_dados
     clientes.append(dados_cliente)
 
-    return clientes
+    with open(db_clientes, "w", encoding="utf-8") as arq_json:
+        json.dump(clientes, arq_json, indent=4, ensure_ascii=False)
+
+
 
 def mostrar_dados_clientes(dados_clientes):
     for clientes in dados_clientes:
         print(f"""
-              nome do cliente: {clientes["nome_cliente"]}
+        Nome do cliente: {clientes["nome_cliente"]}
         CPF do cliente: {clientes["CPF_cliente"]}
         RG do cliente: {clientes["RG_cliente"]}
         Data de nascimento do cliente: {clientes["Data de nascimento_cliente"]}
@@ -49,6 +65,7 @@ def mostrar_dados_clientes(dados_clientes):
 
 
 def iniciar_sistema():
+    clientes = carregar_dados()
     while True:
         print("")
         print("="*80)
